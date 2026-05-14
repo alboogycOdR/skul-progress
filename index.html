@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SKUL.CO.ZM — Project Updates</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito Sans', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #EEEADE;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+.page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+
+header.main {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px;
+}
+.brand-mark {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: #2EBA6C;
+  color: #FFFFFF;
+  display: grid; place-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -1px;
+}
+h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+.subtitle {
+  margin: 4px 0 0;
+  color: #3A3A3A;
+  font-size: 15px;
+}
+
+.intro {
+  margin-bottom: 36px;
+  color: #3A3A3A;
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 580px;
+}
+
+.report-list {
+  display: grid;
+  gap: 16px;
+}
+
+.report-card {
+  display: block;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px 28px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border: 1px solid #DDD8CC;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  border-color: #2EBA6C;
+}
+.report-card-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 8px;
+}
+.report-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.report-icon.kanban { background: #D4F5E2; }
+.report-icon.qa { background: #CFEAEE; }
+.report-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+.report-desc {
+  color: #3A3A3A;
+  font-size: 14px;
+  margin-left: 54px;
+}
+.report-action {
+  display: flex; justify-content: flex-end;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1D9E55;
+  letter-spacing: 0.3px;
+}
+
+footer.foot {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #DDD8CC;
+  font-size: 12px;
+  color: #7A7A7A;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .page { padding: 32px 18px 60px; }
+  h1 { font-size: 23px; }
+  .brand-mark { width: 48px; height: 48px; font-size: 22px; }
+  .report-card { padding: 20px 22px; }
+  .report-desc { margin-left: 0; margin-top: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="main">
+    <div class="brand-mark">S</div>
+    <div>
+      <h1>SKUL.CO.ZM &mdash; Project Updates</h1>
+      <p class="subtitle">Latest progress and quality reports</p>
+    </div>
+  </header>
+
+  <p class="intro">
+    Stakeholder-facing snapshots of the SKUL.CO.ZM build. Each report below is regenerated as the underlying project work progresses &mdash; open any report to see its current state.
+  </p>
+
+  <div class="report-list">
+
+    <a href="progress.html" class="report-card">
+      <div class="report-card-head">
+        <div class="report-icon kanban">&#128202;</div>
+        <div class="report-name">Frontend upgrade progress</div>
+      </div>
+      <div class="report-desc">
+        Live kanban board tracking the website and chat revamp work items. Each card shows status, section, and a brief description of what the work covers.
+      </div>
+      <div class="report-action">Open &rarr;</div>
+    </a>
+
+    <a href="qa.html" class="report-card">
+      <div class="report-card-head">
+        <div class="report-icon qa">&#9989;</div>
+        <div class="report-name">Quality review reports</div>
+      </div>
+      <div class="report-desc">
+        Visual and interactive QA verdicts for recently completed work. Includes annotated screenshots and any outstanding decisions awaiting stakeholder input.
+      </div>
+      <div class="report-action">Open &rarr;</div>
+    </a>
+
+  </div>
+
+  <footer class="foot">
+    SKUL.CO.ZM &middot; Reports refreshed on demand &middot; For questions, contact your project liaison.
+  </footer>
+
+</div>
+</body>
+</html>

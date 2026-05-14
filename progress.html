@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SKUL.CO.ZM — Frontend Upgrade Progress</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #EEEADE;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+}
+.page { max-width: 1400px; margin: 0 auto; padding: 32px 24px 80px; }
+
+header.main {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; margin-bottom: 24px; flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: #2EBA6C;
+  color: #FFFFFF;
+  display: grid; place-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.3px;
+  color: #111111;
+}
+.subtitle { margin: 4px 0 0; color: #3A3A3A; font-size: 14px; }
+.meta { font-size: 13px; color: #7A7A7A; text-align: right; line-height: 1.7; }
+.meta strong { color: #3A3A3A; font-weight: 700; }
+
+.summary-bar {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.summary-headline {
+  display: flex; align-items: baseline; gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.summary-pct {
+  font-family: 'Nunito', sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #1D9E55;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.summary-text { font-size: 14px; color: #3A3A3A; }
+.bar {
+  height: 10px;
+  background: #E5E0D4;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2EBA6C, #1D9E55);
+  border-radius: 999px;
+}
+.stats { display: flex; gap: 8px; flex-wrap: wrap; }
+.stat-chip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 36px;
+}
+@media (max-width: 1280px) { .board { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px)  { .board { grid-template-columns: 1fr; } }
+
+.column {
+  background: #F5F1E8;
+  border-radius: 14px;
+  display: flex; flex-direction: column;
+  min-height: 220px;
+}
+.col-head {
+  padding: 12px 14px;
+  border-radius: 14px 14px 0 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-weight: 700;
+}
+.col-name { text-transform: uppercase; letter-spacing: 0.7px; font-size: 11.5px; }
+.col-count {
+  background: rgba(255,255,255,0.55);
+  color: inherit;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.col-body { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.empty { color: #7A7A7A; font-size: 12.5px; text-align: center; padding: 20px 0; font-style: italic; }
+
+.card {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 10px 12px;
+  border-left: 3px solid #2EBA6C;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.card header { margin-bottom: 4px; }
+.card-id {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.3px;
+}
+.card-summary { margin: 4px 0 0; color: #3A3A3A; }
+details { margin-top: 6px; font-size: 12px; }
+details summary { cursor: pointer; color: #1D9E55; font-weight: 600; outline: none; }
+details summary:hover { text-decoration: underline; }
+.card-full { margin: 6px 0 0; color: #3A3A3A; font-size: 12.5px; line-height: 1.55; }
+
+h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 14px;
+  color: #111111;
+}
+table.legend {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FFFFFF;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 13px;
+}
+table.legend th, table.legend td { padding: 11px 14px; text-align: left; vertical-align: middle; }
+table.legend thead { background: #F5F1E8; }
+table.legend thead th { font-size: 11px; text-transform: uppercase; color: #7A7A7A; letter-spacing: 0.6px; font-weight: 700; }
+table.legend tbody tr { border-top: 1px solid #DDD8CC; }
+.legend-letter { width: 50px; }
+.legend-letter span {
+  display: inline-grid; place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+}
+.legend-title { font-weight: 600; }
+.legend-progress { display: flex; align-items: center; gap: 10px; min-width: 170px; }
+.mini-bar { flex: 1; height: 6px; background: #E5E0D4; border-radius: 999px; overflow: hidden; }
+.mini-bar-fill { height: 100%; border-radius: 999px; background: #2EBA6C; }
+.legend-pct { font-size: 12px; color: #7A7A7A; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+.legend-chips { display: flex; gap: 4px; flex-wrap: wrap; }
+.legend-chip {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+footer.foot {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid #DDD8CC;
+  font-size: 12px;
+  color: #7A7A7A;
+  text-align: center;
+}
+footer.foot code { background: #F5F1E8; padding: 1px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+<header class="main"><div class="brand"><div class="brand-mark">S</div><div><h1>SKUL.CO.ZM — Frontend Upgrade Progress</h1><p class="subtitle">Live snapshot of the website + chat revamp work</p></div></div><div class="meta"><div><strong>Generated:</strong> 14 May 2026 · 21:46</div><div><strong>Commit:</strong> fa447b4</div><div><strong>Source:</strong> docs_frontendupgrade/01_frontend_upgrade_plan_v1.md</div></div></header>
+<div class="summary-bar"><div class="summary-headline"><span class="summary-pct">59%</span><span class="summary-text">complete — 43 of 73 done · 4 awaiting QA · 1 in progress</span></div><div class="bar"><div class="bar-fill" style="width:59%"></div></div><div class="stats"><span class="stat-chip" style="background:#E5E0D4;color:#3A3A3A">Not started: 25</span><span class="stat-chip" style="background:#FFF1B8;color:#7A5A00">Clarification: 0</span><span class="stat-chip" style="background:#E2E8F0;color:#475569">Queued: 0</span><span class="stat-chip" style="background:#D4F5E2;color:#1D9E55">In progress: 1</span><span class="stat-chip" style="background:#CFEAEE;color:#0E6168">QA review: 4</span><span class="stat-chip" style="background:#2EBA6C;color:#FFFFFF">Done: 43</span></div></div>
+<div class="board">
+<section class="column"><div class="col-head" style="background:#E5E0D4;color:#3A3A3A"><span class="col-name">Not started</span><span class="col-count">25</span></div><div class="col-body"><article class="card" style="border-left-color:#EC4899"><header><span class="card-id" style="background:#EC489922;color:#EC4899">F.1</span></header><p class="card-summary">Create /about page with long-form About content from READ MORE SECTION COPY.docx.</p><details><summary>More</summary><p class="card-full">Create `/about` page with long-form About content from `READ MORE SECTION COPY.docx`.</p></details></article>
+<article class="card" style="border-left-color:#EC4899"><header><span class="card-id" style="background:#EC489922;color:#EC4899">F.2</span></header><p class="card-summary">Create /how-it-works page with long-form How-It-Works content (incl.</p><details><summary>More</summary><p class="card-full">Create `/how-it-works` page with long-form How-It-Works content (incl. moved content from B.1).</p></details></article>
+<article class="card" style="border-left-color:#EC4899"><header><span class="card-id" style="background:#EC489922;color:#EC4899">F.3</span></header><p class="card-summary">Create /learning page with long-form Learning content (incl.</p><details><summary>More</summary><p class="card-full">Create `/learning` page with long-form Learning content (incl. moved content from B.2).</p></details></article>
+<article class="card" style="border-left-color:#EC4899"><header><span class="card-id" style="background:#EC489922;color:#EC4899">F.4</span></header><p class="card-summary">Create /contact page with a contact form (fields TBC; need to decide where submissions go — email, DB table, third-party form?).</p><details><summary>More</summary><p class="card-full">Create `/contact` page with a contact form (fields TBC; need to decide where submissions go — email, DB table, third-party form?).</p></details></article>
+<article class="card" style="border-left-color:#6366F1"><header><span class="card-id" style="background:#6366F122;color:#6366F1">H.3</span></header><p class="card-summary">Add Google social sign-in.</p><details><summary>More</summary><p class="card-full">Add **Google** social sign-in.</p></details></article>
+<article class="card" style="border-left-color:#6366F1"><header><span class="card-id" style="background:#6366F122;color:#6366F1">H.4</span></header><p class="card-summary">Add Facebook social sign-in.</p><details><summary>More</summary><p class="card-full">Add **Facebook** social sign-in.</p></details></article>
+<article class="card" style="border-left-color:#6366F1"><header><span class="card-id" style="background:#6366F122;color:#6366F1">H.5</span></header><p class="card-summary">Add WhatsApp sign-in.</p><details><summary>More</summary><p class="card-full">Add **WhatsApp** sign-in. ⚠️ No standard OAuth flow exists — needs decision: (a) WhatsApp OTP login via Business API, or (b) defer.</p></details></article>
+<article class="card" style="border-left-color:#D97706"><header><span class="card-id" style="background:#D9770622;color:#D97706">I.3</span></header><p class="card-summary">Add an edit-question-after-submit feature on user message bubbles (Gemini-style copy + pencil icons).</p><details><summary>More</summary><p class="card-full">Add an **edit-question-after-submit** feature on user message bubbles (Gemini-style copy + pencil icons). Editing re-runs that turn.</p></details></article>
+<article class="card" style="border-left-color:#D97706"><header><span class="card-id" style="background:#D9770622;color:#D97706">I.5</span></header><p class="card-summary">Confirm/expose Picture Upload on Silver tier (currently appears Gold-only — verify and adjust gating to align with E.2).</p><details><summary>More</summary><p class="card-full">Confirm/expose Picture Upload on Silver tier (currently appears Gold-only — verify and adjust gating to align with E.2).</p></details></article>
+<article class="card" style="border-left-color:#8B5CF6"><header><span class="card-id" style="background:#8B5CF622;color:#8B5CF6">J.3</span></header><p class="card-summary">(Optional / pending decision) Build on existing user prompting to drive student engagement — currently vague; needs its own brief.</p><details><summary>More</summary><p class="card-full">(Optional / pending decision) Build on existing user prompting to drive student engagement — currently vague; needs its own brief.</p></details></article>
+<article class="card" style="border-left-color:#14B8A6"><header><span class="card-id" style="background:#14B8A622;color:#14B8A6">K.1</span></header><p class="card-summary">Define what &quot;different UX between tiers&quot; means concretely: response detail length, feature gates, UI styling, or all three.</p><details><summary>More</summary><p class="card-full">Define what &quot;different UX between tiers&quot; means concretely: response detail length, feature gates, UI styling, or all three.</p></details></article>
+<article class="card" style="border-left-color:#14B8A6"><header><span class="card-id" style="background:#14B8A622;color:#14B8A6">K.2</span></header><p class="card-summary">Implement Free-tier chat experience per K.1 (lowest detail / fewest features).</p><details><summary>More</summary><p class="card-full">Implement Free-tier chat experience per K.1 (lowest detail / fewest features).</p></details></article>
+<article class="card" style="border-left-color:#14B8A6"><header><span class="card-id" style="background:#14B8A622;color:#14B8A6">K.3</span></header><p class="card-summary">Implement Silver-tier chat experience per K.1 (mid).</p><details><summary>More</summary><p class="card-full">Implement Silver-tier chat experience per K.1 (mid).</p></details></article>
+<article class="card" style="border-left-color:#14B8A6"><header><span class="card-id" style="background:#14B8A622;color:#14B8A6">K.4</span></header><p class="card-summary">Implement Gold-tier chat experience per K.1 (highest detail / all features).</p><details><summary>More</summary><p class="card-full">Implement Gold-tier chat experience per K.1 (highest detail / all features).</p></details></article>
+<article class="card" style="border-left-color:#EF4444"><header><span class="card-id" style="background:#EF444422;color:#EF4444">L.1</span></header><p class="card-summary">Zambia: complete syllabus content Form 1–4 ingestion (mostly done per existing roadmap).</p><details><summary>More</summary><p class="card-full">Zambia: complete syllabus content Form 1–4 ingestion (mostly done per existing roadmap).</p></details></article>
+<article class="card" style="border-left-color:#EF4444"><header><span class="card-id" style="background:#EF444422;color:#EF4444">L.2</span></header><p class="card-summary">Zambia: payment gateway registration (Flutterwave production).</p><details><summary>More</summary><p class="card-full">Zambia: payment gateway registration (Flutterwave production).</p></details></article>
+<article class="card" style="border-left-color:#EF4444"><header><span class="card-id" style="background:#EF444422;color:#EF4444">L.3</span></header><p class="card-summary">Zambia: pre-launch marketing groundwork.</p><details><summary>More</summary><p class="card-full">Zambia: pre-launch marketing groundwork.</p></details></article>
+<article class="card" style="border-left-color:#EF4444"><header><span class="card-id" style="background:#EF444422;color:#EF4444">L.4</span></header><p class="card-summary">South Africa: replicate website changes for SA market.</p><details><summary>More</summary><p class="card-full">South Africa: replicate website changes for SA market.</p></details></article>
+<article class="card" style="border-left-color:#EF4444"><header><span class="card-id" style="background:#EF444422;color:#EF4444">L.5</span></header><p class="card-summary">South Africa: payment gateway setup for SA.</p><details><summary>More</summary><p class="card-full">South Africa: payment gateway setup for SA.</p></details></article>
+<article class="card" style="border-left-color:#EF4444"><header><span class="card-id" style="background:#EF444422;color:#EF4444">L.6</span></header><p class="card-summary">South Africa: ingest Form 1–4 SA syllabus.</p><details><summary>More</summary><p class="card-full">South Africa: ingest Form 1–4 SA syllabus.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">M.1</span></header><p class="card-summary">Ensure OAuth user creation calls the same subscription bootstrap helper that password registration uses (free tier + lifetime quota row).</p><details><summary>More</summary><p class="card-full">Ensure OAuth user creation calls the same subscription bootstrap helper that password registration uses (free tier + lifetime quota row). Without this, the OAuth user has no `Subscription` row and the quota check on the first question will 500.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">M.2</span></header><p class="card-summary">Decide phone-number capture point for OAuth users (Mobile Money requires it; Google/Facebook don&#x27;t supply it).</p><details><summary>More</summary><p class="card-full">Decide phone-number capture point for OAuth users (Mobile Money requires it; Google/Facebook don&#x27;t supply it). Two options: (a) optional field on `/welcome`, required at checkout; (b) defer to first payment attempt entirely. Recommendation pending.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">M.3</span></header><p class="card-summary">Define behaviour when an OAuth sign-up email collides with a password account that has an active paid subscription.</p><details><summary>More</summary><p class="card-full">Define behaviour when an OAuth sign-up email collides with a password account that has an active paid subscription. Stranded-subscription risk if we don&#x27;t auto-link or guide the user to link via password sign-in. Tied to spec Q1 (account-linking strategy).</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">M.4</span></header><p class="card-summary">End-to-end smoke test: an OAuth-registered user can purchase Silver and Gold via Flutterwave Mobile Money and Card, receive the webhook activation, and have the correct…</p><details><summary>More</summary><p class="card-full">End-to-end smoke test: an OAuth-registered user can purchase Silver and Gold via Flutterwave Mobile Money and Card, receive the webhook activation, and have the correct tier reflected in their chat experience.</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">I.3</span></header><p class="card-summary">Add an edit-question-after-submit feature on user message bubbles (Gemini-style copy + pencil icons).</p><details><summary>More</summary><p class="card-full">Add an edit-question-after-submit feature on user message bubbles (Gemini-style copy + pencil icons). Editing re-runs that turn.</p></details></article></div></section>
+<section class="column"><div class="col-head" style="background:#FFF1B8;color:#7A5A00"><span class="col-name">Clarification</span><span class="col-count">0</span></div><div class="col-body"><p class="empty">— none —</p></div></section>
+<section class="column"><div class="col-head" style="background:#E2E8F0;color:#475569"><span class="col-name">Queued</span><span class="col-count">0</span></div><div class="col-body"><p class="empty">— none —</p></div></section>
+<section class="column"><div class="col-head" style="background:#D4F5E2;color:#1D9E55"><span class="col-name">In progress</span><span class="col-count">1</span></div><div class="col-body"><article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">N.1</span></header><p class="card-summary">Publish the stakeholder progress board and QA reports to GitHub Pages.</p><details><summary>More</summary><p class="card-full">Publish the stakeholder progress board and QA reports to **GitHub Pages**. Repo: &lt;https://github.com/alboogycOdR/skul-progress.git&gt; (public). Layout: multi-report hub — `index.html` (landing page linking to the other reports), `progress.html` (kanban progress board), `qa.html` (latest QA review). Telegram delivery is retained as the personal notification channel; the link in those Telegram messages will eventually point at the GitHub Pages URL instead of Gofile. Initial files prepared by the assistant 2026-05-14; remaining: user uploads the three files via the repo&#x27;s web UI, enables GitHub Pages in repo Settings → Pages (`main` / root), confirms the live URL works. Once that&#x27;s verified, a `--publish` flag will be added to `scripts/generate_progress_board.py` so subsequent regenerations push automatically via git instead of round-tripping through manual upload.</p></details></article></div></section>
+<section class="column"><div class="col-head" style="background:#CFEAEE;color:#0E6168"><span class="col-name">QA review</span><span class="col-count">4</span></div><div class="col-body"><article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.9</span></header><p class="card-summary">Mobile navigation menu (hamburger) — collapses landing nav links (Home / About / How it Works / Social / Pricing / Contact Us) into a slide-down panel on screens &lt; 768px.</p><details><summary>More</summary><p class="card-full">Mobile navigation menu (hamburger) — collapses landing nav links (Home / About / How it Works / Social / Pricing / Contact Us) into a slide-down panel on screens &lt; 768px. Sign In + Start Free buttons remain visible in the nav. Escape closes the panel.</p></details></article>
+<article class="card" style="border-left-color:#6366F1"><header><span class="card-id" style="background:#6366F122;color:#6366F1">H.1</span></header><p class="card-summary">Added a Home (back-to-home) button to the registration page — fixed top-left, routes to /.</p><details><summary>More</summary><p class="card-full">Added a **Home** (back-to-home) button to the registration page — fixed top-left, routes to `/`.</p></details></article>
+<article class="card" style="border-left-color:#6366F1"><header><span class="card-id" style="background:#6366F122;color:#6366F1">H.2</span></header><p class="card-summary">Added a Home (back-to-home) button to the sign-in page — same shared HomeBackButton component as H.1.</p><details><summary>More</summary><p class="card-full">Added a **Home** (back-to-home) button to the sign-in page — same shared `HomeBackButton` component as H.1.</p></details></article>
+<article class="card" style="border-left-color:#D97706"><header><span class="card-id" style="background:#D9770622;color:#D97706">I.4</span></header><p class="card-summary">Mobile image input now offers gallery + camera + files via OS-native chooser.</p><details><summary>More</summary><p class="card-full">Mobile image input now offers gallery + camera + files via OS-native chooser. Removed `capture=&quot;environment&quot;` from the chat file input.</p></details></article></div></section>
+<section class="column"><div class="col-head" style="background:#2EBA6C;color:#FFFFFF"><span class="col-name">Done</span><span class="col-count">43</span></div><div class="col-body"><article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.1</span></header><p class="card-summary">Replace &quot;Learners&quot; with &quot;Students&quot; across all user-facing text (landing, registration, chat, footer, copy strings).</p><details><summary>More</summary><p class="card-full">Replace &quot;Learners&quot; with &quot;Students&quot; across all user-facing text (landing, registration, chat, footer, copy strings).</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.2</span></header><p class="card-summary">Replace &quot;Grades&quot; with &quot;Forms&quot; across all user-facing labels (chat header subtitle, register grade picker, pricing copy).</p><details><summary>More</summary><p class="card-full">Replace &quot;Grades&quot; with &quot;Forms&quot; across all user-facing labels (chat header subtitle, register grade picker, pricing copy). Backend data values unchanged.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.3</span></header><p class="card-summary">Replace text-style &quot;SKUL.&quot; wordmark with the official logo in the nav bar.</p><details><summary>More</summary><p class="card-full">Replace text-style &quot;SKUL.&quot; wordmark with the official logo in the nav bar.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.4</span></header><p class="card-summary">Replace text-style &quot;SKUL.&quot; wordmark with the official logo in the chat header.</p><details><summary>More</summary><p class="card-full">Replace text-style &quot;SKUL.&quot; wordmark with the official logo in the chat header.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.5</span></header><p class="card-summary">Replace logo in the footer with the official logo.</p><details><summary>More</summary><p class="card-full">Replace logo in the footer with the official logo.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.6</span></header><p class="card-summary">Wire favicon from docs_frontend_update/favicon/ into the site head.</p><details><summary>More</summary><p class="card-full">Wire favicon from `docs_frontend_update/favicon/` into the site head.</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.7</span></header><p class="card-summary">Fix mobile viewport bug — landing page not fitting on mobile screens (investigate overflow / fixed widths).</p><details><summary>More</summary><p class="card-full">Fix mobile viewport bug — landing page not fitting on mobile screens (investigate overflow / fixed widths).</p></details></article>
+<article class="card" style="border-left-color:#1D9E55"><header><span class="card-id" style="background:#1D9E5522;color:#1D9E55">A.8</span></header><p class="card-summary">Make the side-scroll indicator (up/down) more visible.</p><details><summary>More</summary><p class="card-full">Make the side-scroll indicator (up/down) more visible.</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">B.1</span></header><p class="card-summary">Remove the black &quot;Just Ask.</p><details><summary>More</summary><p class="card-full">Remove the black &quot;Just Ask. Type or Snap a Photo.&quot; block from the landing page (move content to `/how-it-works` Read-More page).</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">B.2</span></header><p class="card-summary">Remove the &quot;A Smarter Way to Learn with AI&quot; block from the landing page (move content to /learning Read-More page).</p><details><summary>More</summary><p class="card-full">Remove the &quot;A Smarter Way to Learn with AI&quot; block from the landing page (move content to `/learning` Read-More page).</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">B.3</span></header><p class="card-summary">Remove the &quot;Designed for Your Reality&quot; section entirely.</p><details><summary>More</summary><p class="card-full">Remove the &quot;Designed for Your Reality&quot; section entirely.</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">B.4</span></header><p class="card-summary">Remove the &quot;Built for Your Future&quot; sub-section entirely.</p><details><summary>More</summary><p class="card-full">Remove the &quot;Built for Your Future&quot; sub-section entirely.</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">B.5</span></header><p class="card-summary">Remove the &quot;Pay Your Way&quot; weekly/monthly/yearly cards entirely.</p><details><summary>More</summary><p class="card-full">Remove the &quot;Pay Your Way&quot; weekly/monthly/yearly cards entirely.</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">B.6</span></header><p class="card-summary">Remove the duplicate &quot;Ready to Start Learning?&quot; CTA block above the footer.</p><details><summary>More</summary><p class="card-full">Remove the duplicate &quot;Ready to Start Learning?&quot; CTA block above the footer.</p></details></article>
+<article class="card" style="border-left-color:#2563EB"><header><span class="card-id" style="background:#2563EB22;color:#2563EB">B.7</span></header><p class="card-summary">Repurpose the &quot;Your 24/7 Expert for Any Subject&quot; section into a &quot;Follow Us On Social Media&quot; section with FB / TikTok / X / Instagram logos and links (URLs in slide 8).</p><details><summary>More</summary><p class="card-full">Repurpose the &quot;Your 24/7 Expert for Any Subject&quot; section into a &quot;Follow Us On Social Media&quot; section with FB / TikTok / X / Instagram logos and links (URLs in slide 8).</p></details></article>
+<article class="card" style="border-left-color:#A855F7"><header><span class="card-id" style="background:#A855F722;color:#A855F7">C.1</span></header><p class="card-summary">Add Home link as first nav item (scrolls to top of landing).</p><details><summary>More</summary><p class="card-full">Add **Home** link as first nav item (scrolls to top of landing).</p></details></article>
+<article class="card" style="border-left-color:#A855F7"><header><span class="card-id" style="background:#A855F722;color:#A855F7">C.2</span></header><p class="card-summary">Add Contact Us link as last nav item (routes to /contact).</p><details><summary>More</summary><p class="card-full">Add **Contact Us** link as last nav item (routes to `/contact`).</p></details></article>
+<article class="card" style="border-left-color:#A855F7"><header><span class="card-id" style="background:#A855F722;color:#A855F7">C.3</span></header><p class="card-summary">Move How it Works so it sits after About.</p><details><summary>More</summary><p class="card-full">Move **How it Works** so it sits after **About**.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.1</span></header><p class="card-summary">About Us: replace yellow-highlighted blurb with the new copy from slide 6.</p><details><summary>More</summary><p class="card-full">About Us: replace yellow-highlighted blurb with the new copy from slide 6.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.2</span></header><p class="card-summary">About Us: change &quot;Personal Tutor&quot; label to &quot;Digital Tutor&quot;.</p><details><summary>More</summary><p class="card-full">About Us: change &quot;Personal Tutor&quot; label to &quot;Digital Tutor&quot;.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.3</span></header><p class="card-summary">About Us: replace the right-card sub-blurb with the new text from slide 7.</p><details><summary>More</summary><p class="card-full">About Us: replace the right-card sub-blurb with the new text from slide 7.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.4</span></header><p class="card-summary">About Us: add Read more link routing to /about.</p><details><summary>More</summary><p class="card-full">About Us: add **Read more** link routing to `/about`.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.5</span></header><p class="card-summary">How it Works: add Read more link routing to /how-it-works.</p><details><summary>More</summary><p class="card-full">How it Works: add **Read more** link routing to `/how-it-works`.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.6</span></header><p class="card-summary">Learning Made for You: replace the middle card&#x27;s &quot;ZM&quot; icon with the Zambia flag (already shown on mobile — make consistent on desktop).</p><details><summary>More</summary><p class="card-full">Learning Made for You: replace the middle card&#x27;s &quot;ZM&quot; icon with the Zambia flag (already shown on mobile — make consistent on desktop).</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.7</span></header><p class="card-summary">Learning Made for You: add Read more link routing to /learning.</p><details><summary>More</summary><p class="card-full">Learning Made for You: add **Read more** link routing to `/learning`.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.8</span></header><p class="card-summary">Pricing: change title to &quot;Choose a Plan That Works for You&quot;.</p><details><summary>More</summary><p class="card-full">Pricing: change title to &quot;Choose a Plan That Works for You&quot;.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.9</span></header><p class="card-summary">Pricing: replace yellow-highlighted subtitle with the new copy from slide 12.</p><details><summary>More</summary><p class="card-full">Pricing: replace yellow-highlighted subtitle with the new copy from slide 12.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.10</span></header><p class="card-summary">Try Before You Commit: change heading to &quot;Try Skul For Free&quot;.</p><details><summary>More</summary><p class="card-full">Try Before You Commit: change heading to &quot;Try Skul For Free&quot;.</p></details></article>
+<article class="card" style="border-left-color:#F97316"><header><span class="card-id" style="background:#F9731622;color:#F97316">D.11</span></header><p class="card-summary">Try Before You Commit: replace body copy with the new text from slide 17.</p><details><summary>More</summary><p class="card-full">Try Before You Commit: replace body copy with the new text from slide 17.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.1</span></header><p class="card-summary">Silver: remove &quot;Mind maps&quot; from feature list.</p><details><summary>More</summary><p class="card-full">Silver: remove &quot;Mind maps&quot; from feature list.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.2</span></header><p class="card-summary">Silver: add &quot;Picture Upload&quot; to feature list.</p><details><summary>More</summary><p class="card-full">Silver: add &quot;Picture Upload&quot; to feature list.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.3</span></header><p class="card-summary">Gold: remove &quot;Mind maps&quot; from feature list.</p><details><summary>More</summary><p class="card-full">Gold: remove &quot;Mind maps&quot; from feature list.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.4</span></header><p class="card-summary">Gold: remove &quot;Flash cards&quot; from feature list.</p><details><summary>More</summary><p class="card-full">Gold: remove &quot;Flash cards&quot; from feature list.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.5</span></header><p class="card-summary">Gold: remove &quot;Podcasts&quot; from feature list.</p><details><summary>More</summary><p class="card-full">Gold: remove &quot;Podcasts&quot; from feature list.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.6</span></header><p class="card-summary">Gold: remove &quot;Presentation support&quot; from feature list.</p><details><summary>More</summary><p class="card-full">Gold: remove &quot;Presentation support&quot; from feature list.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.7</span></header><p class="card-summary">Gold: add &quot;Picture Upload&quot; to feature list.</p><details><summary>More</summary><p class="card-full">Gold: add &quot;Picture Upload&quot; to feature list.</p></details></article>
+<article class="card" style="border-left-color:#0EA5E9"><header><span class="card-id" style="background:#0EA5E922;color:#0EA5E9">E.8</span></header><p class="card-summary">Free: keep as-is (no change — listed for completeness).</p><details><summary>More</summary><p class="card-full">Free: keep as-is (no change — listed for completeness).</p></details></article>
+<article class="card" style="border-left-color:#0D9488"><header><span class="card-id" style="background:#0D948822;color:#0D9488">G.1</span></header><p class="card-summary">Add the chosen hero image as the visual call-to-action (which option — slide 5 option 1/2/3, or Skul Hero Main.png?).</p><details><summary>More</summary><p class="card-full">Add the chosen hero image as the visual call-to-action (which option — slide 5 option 1/2/3, or `Skul Hero Main.png`?).</p></details></article>
+<article class="card" style="border-left-color:#0D9488"><header><span class="card-id" style="background:#0D948822;color:#0D9488">G.2</span></header><p class="card-summary">Integrate selected copy from the chosen image into the hero (&quot;GET HELP WITH YOUR SCHOOLWORK ANYTIME — Forms 1–4 — ASK YOUR FIRST QUESTION FREE&quot;).</p><details><summary>More</summary><p class="card-full">Integrate selected copy from the chosen image into the hero (&quot;GET HELP WITH YOUR SCHOOLWORK ANYTIME — Forms 1–4 — ASK YOUR FIRST QUESTION FREE&quot;).</p></details></article>
+<article class="card" style="border-left-color:#D97706"><header><span class="card-id" style="background:#D9770622;color:#D97706">I.1</span></header><p class="card-summary">Replace text &quot;SKUL.&quot; in chat header with the official logo.</p><details><summary>More</summary><p class="card-full">Replace text &quot;SKUL.&quot; in chat header with the official logo.</p></details></article>
+<article class="card" style="border-left-color:#D97706"><header><span class="card-id" style="background:#D9770622;color:#D97706">I.2</span></header><p class="card-summary">Remove the &quot;Grade 8 (Form 1) · Cambridge Curriculum&quot; subtitle.</p><details><summary>More</summary><p class="card-full">Remove the &quot;Grade 8 (Form 1) · Cambridge Curriculum&quot; subtitle. Show **Form N** only — no Cambridge reference.</p></details></article>
+<article class="card" style="border-left-color:#8B5CF6"><header><span class="card-id" style="background:#8B5CF622;color:#8B5CF6">J.1</span></header><p class="card-summary">Replace &quot;ECZ&quot; mentions in the tutor system prompt with neutral phrasing (e.g.</p><details><summary>More</summary><p class="card-full">Replace &quot;ECZ&quot; mentions in the tutor system prompt with neutral phrasing (e.g. &quot;your local curriculum&quot; or &quot;your education authorities&quot;) — `backend/app/services/tutor_service.py`.</p></details></article>
+<article class="card" style="border-left-color:#8B5CF6"><header><span class="card-id" style="background:#8B5CF622;color:#8B5CF6">J.2</span></header><p class="card-summary">Remove &quot;Cambridge Curriculum&quot; reference from the system prompt and any chat-context strings.</p><details><summary>More</summary><p class="card-full">Remove &quot;Cambridge Curriculum&quot; reference from the system prompt and any chat-context strings.</p></details></article></div></section>
+</div>
+<h2>By section</h2>
+<table class="legend"><thead><tr><th>Area</th><th>Section</th><th>Progress</th><th>Status breakdown</th></tr></thead><tbody>
+<tr><td class="legend-letter"><span style="background:#1D9E55">A</span></td><td class="legend-title">Global terminology + branding</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:89%"></div></div><span class="legend-pct">8/9</span></td><td class="legend-chips"><span class="legend-chip" style="background:#CFEAEE;color:#0E6168">QA review 1</span> <span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 8</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#2563EB">B</span></td><td class="legend-title">Landing page — structural changes</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:100%"></div></div><span class="legend-pct">7/7</span></td><td class="legend-chips"><span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 7</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#A855F7">C</span></td><td class="legend-title">Landing page — navigation</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:100%"></div></div><span class="legend-pct">3/3</span></td><td class="legend-chips"><span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 3</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#F97316">D</span></td><td class="legend-title">Landing page — copy edits</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:100%"></div></div><span class="legend-pct">11/11</span></td><td class="legend-chips"><span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 11</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#0EA5E9">E</span></td><td class="legend-title">Pricing tier feature lists (display-only on landing)</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:100%"></div></div><span class="legend-pct">8/8</span></td><td class="legend-chips"><span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 8</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#EC4899">F</span></td><td class="legend-title">New Read-More / standalone pages</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:0%"></div></div><span class="legend-pct">0/4</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 4</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#0D9488">G</span></td><td class="legend-title">Hero section</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:100%"></div></div><span class="legend-pct">2/2</span></td><td class="legend-chips"><span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 2</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#6366F1">H</span></td><td class="legend-title">Auth pages (register + sign-in)</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:0%"></div></div><span class="legend-pct">0/5</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 3</span> <span class="legend-chip" style="background:#CFEAEE;color:#0E6168">QA review 2</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#D97706">I</span></td><td class="legend-title">Chat section</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:40%"></div></div><span class="legend-pct">2/5</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 2</span> <span class="legend-chip" style="background:#CFEAEE;color:#0E6168">QA review 1</span> <span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 2</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#8B5CF6">J</span></td><td class="legend-title">Backend / RAG — content and prompt</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:67%"></div></div><span class="legend-pct">2/3</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 1</span> <span class="legend-chip" style="background:#2EBA6C;color:#FFFFFF">Done 2</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#14B8A6">K</span></td><td class="legend-title">Tier-differentiated chat UX (needs decision before implementing)</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:0%"></div></div><span class="legend-pct">0/4</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 4</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#EF4444">L</span></td><td class="legend-title">Out of scope for this frontend-feedback phase (flagged only)</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:0%"></div></div><span class="legend-pct">0/6</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 6</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#1D9E55">M</span></td><td class="legend-title">Subscription &amp; payment integration with OAuth (deferred — to be revisited)</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:0%"></div></div><span class="legend-pct">0/4</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 4</span></td></tr>
+<tr><td class="legend-letter"><span style="background:#2563EB">N</span></td><td class="legend-title">Utilities (internal tooling)</td><td class="legend-progress"><div class="mini-bar"><div class="mini-bar-fill" style="width:0%"></div></div><span class="legend-pct">0/2</span></td><td class="legend-chips"><span class="legend-chip" style="background:#E5E0D4;color:#3A3A3A">Not started 1</span> <span class="legend-chip" style="background:#D4F5E2;color:#1D9E55">In progress 1</span></td></tr>
+</tbody></table>
+<footer class="foot">Self-contained snapshot · SKUL.CO.ZM · Generated by <code>scripts/generate_progress_board.py</code></footer>
+</div>
+</body>
+</html>
