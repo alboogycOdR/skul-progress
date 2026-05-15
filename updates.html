@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SKUL.CO.ZM — Updates &amp; Previews</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito Sans', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #EEEADE;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+.page { max-width: 920px; margin: 0 auto; padding: 36px 22px 80px; }
+
+header.main { margin-bottom: 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.brand-mark {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: #2EBA6C;
+  color: #FFFFFF;
+  display: grid; place-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+}
+h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+.subtitle { color: #3A3A3A; font-size: 14px; margin: 4px 0 0; }
+.back-link {
+  margin-left: auto;
+  font-size: 13px;
+  color: #1D9E55;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: 1px solid #1D9E55;
+  border-radius: 999px;
+  transition: background 0.15s, color 0.15s;
+}
+.back-link:hover { background: #1D9E55; color: #FFFFFF; }
+
+.intro {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  font-size: 14px;
+  color: #3A3A3A;
+}
+.intro strong { color: #111111; }
+
+article.update {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px 26px 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.update-head {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.update-date {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7A7A7A;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+.ticket-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: #F5F1E8;
+  border: 1px solid #DDD8CC;
+  font-size: 12px;
+  font-weight: 800;
+  color: #3A3A3A;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.3px;
+}
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.update-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111111;
+  margin: 6px 0 14px;
+  letter-spacing: -0.3px;
+}
+.update-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #3A3A3A;
+  margin-bottom: 14px;
+}
+.update-notes {
+  background: #F5F1E8;
+  border-left: 3px solid #2EBA6C;
+  border-radius: 6px;
+  padding: 12px 16px 12px 18px;
+  margin: 14px 0 18px;
+  font-size: 13px;
+  color: #3A3A3A;
+}
+.update-notes h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #7A7A7A;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+.update-notes ul { margin: 0; padding-left: 18px; }
+.update-notes li { margin: 3px 0; line-height: 1.6; }
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 4px;
+}
+figure {
+  margin: 0;
+  background: #F5F1E8;
+  border: 1px solid #DDD8CC;
+  border-radius: 10px;
+  padding: 10px;
+}
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+figcaption {
+  font-size: 12px;
+  color: #7A7A7A;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+footer.foot {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid #DDD8CC;
+  font-size: 12px;
+  color: #7A7A7A;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="main">
+    <div class="brand-mark">S</div>
+    <div>
+      <h1>Updates &amp; Previews</h1>
+      <p class="subtitle">A running log of recent feature and content changes</p>
+    </div>
+    <a class="back-link" href="index.html">&larr; Hub</a>
+  </header>
+  <div class="intro">
+    Each entry below is dated, linked to its plan ticket, and includes the change description plus screenshots. <strong>Newest entries appear first.</strong>
+  </div>
+  <article class="update"><div class="update-head"><span class="update-date">15 May 2026</span><span class="ticket-chip">G.1</span><span class="status-chip" style="background:#2EBA6C;color:#FFFFFF">Done</span></div><h2 class="update-title">Hero image refresh</h2><p class="update-description">Replaced the homepage hero image with a new photograph featuring Zambian secondary-school students gathered around a tablet displaying the SKUL.CO.ZM platform. The image is the visual call-to-action for the landing page and reinforces the brand promise of accessible, in-pocket tutoring for the target audience.</p><div class="update-notes"><h3>Implementation notes</h3><ul><li>Source provided by stakeholder: 2752×1536 PNG (8.1 MB).</li><li>Optimised for delivery: resized to 1800 px wide and recompressed to a 369 KB progressive JPG at 85 % quality — roughly 22× smaller than the source.</li><li>No code changes required — overwrote the existing frontend/public/assets/hero/skul-hero.jpg in place.</li><li>The SKUL.CO.ZM wordmark is baked into the image. Future brand-mark changes would require re-rendering the hero, not a code edit.</li></ul></div><div class="shots"><figure><img src="images/update_2026-05-15_g1_landing_mobile.png" alt="Mobile · 375 × 812 (iPhone SE / Pixel 5 viewport)"><figcaption>Mobile · 375 × 812 (iPhone SE / Pixel 5 viewport)</figcaption></figure><figure><img src="images/update_2026-05-15_g1_landing_desktop.png" alt="Desktop · 1280 × 900"><figcaption>Desktop · 1280 × 900</figcaption></figure></div></article>
+  <footer class="foot">Generated 15 May 2026 · 16:58 · SKUL.CO.ZM project updates log</footer>
+</div>
+</body>
+</html>
