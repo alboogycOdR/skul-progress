@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SKUL.CO.ZM — Worklog (internal)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito Sans', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #EEEADE;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+.page { max-width: 980px; margin: 0 auto; padding: 28px 22px 80px; }
+
+.internal-banner {
+  background: #FFE0CC;
+  color: #8A4500;
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 22px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  display: flex; gap: 10px; align-items: center;
+}
+.internal-banner .dot {
+  width: 10px; height: 10px; border-radius: 50%; background: #8A4500;
+  flex-shrink: 0;
+}
+
+header.main { margin-bottom: 24px; display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.brand-mark {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: #2EBA6C;
+  color: #FFFFFF;
+  display: grid; place-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+}
+h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+.subtitle { color: #3A3A3A; font-size: 14px; margin: 4px 0 0; }
+.meta-line { color: #7A7A7A; font-size: 12.5px; margin-top: 4px; }
+
+.tldr {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.tldr h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #7A7A7A;
+  margin: 0 0 12px;
+  font-weight: 800;
+}
+.counters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+.counter {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #F5F1E8;
+  border: 1px solid #DDD8CC;
+}
+.counter-n {
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1;
+}
+.counter-label {
+  font-size: 12px;
+  color: #7A7A7A;
+  margin-top: 4px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+section.cat {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+section.cat header {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+section.cat h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111111;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+section.cat .cat-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7A7A7A;
+  background: #F5F1E8;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+section.cat .cat-blurb {
+  color: #3A3A3A;
+  font-size: 13.5px;
+  margin-bottom: 12px;
+}
+
+table.items {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+table.items td {
+  padding: 8px 6px;
+  vertical-align: top;
+  border-top: 1px solid #DDD8CC;
+}
+table.items tr:first-child td { border-top: none; }
+.id-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #F5F1E8;
+  border: 1px solid #DDD8CC;
+  font-size: 11.5px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.3px;
+  color: #3A3A3A;
+  white-space: nowrap;
+}
+.status-chip {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 6px;
+}
+.title-cell { color: #3A3A3A; line-height: 1.55; }
+.source-tag {
+  color: #7A7A7A;
+  font-size: 11px;
+  font-style: italic;
+  margin-left: 4px;
+}
+
+ul.plain { list-style: none; margin: 0; padding: 0; }
+ul.plain li {
+  padding: 8px 0;
+  border-top: 1px solid #DDD8CC;
+  font-size: 13.5px;
+  color: #3A3A3A;
+  line-height: 1.55;
+}
+ul.plain li:first-child { border-top: none; }
+
+footer.foot {
+  margin-top: 32px;
+  padding-top: 18px;
+  border-top: 1px solid #DDD8CC;
+  font-size: 12px;
+  color: #7A7A7A;
+  text-align: center;
+}
+footer.foot a { color: #1D9E55; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="internal-banner">
+    <span class="dot"></span>
+    <span>INTERNAL — this page is not linked from the public hub. Stakeholders should not see this view.</span>
+  </div>
+  <header class="main">
+    <div class="brand-mark">S</div>
+    <div>
+      <h1>SKUL.CO.ZM &mdash; Worklog</h1>
+      <p class="subtitle">Where everything sits across the frontend plan and the project backlog, grouped by what's actually blocking it.</p>
+      <p class="meta-line">Generated 16 May 2026 · 15:27 · auto-derived from <code>01_frontend_upgrade_plan_v1.md</code> and <code>BACKLOG.md</code>.</p>
+    </div>
+  </header>
+  <div class="tldr">
+    <h2>At a glance</h2>
+    <div class="counters"><div class="counter"><div class="counter-n">8</div><div class="counter-label">awaiting sign-off</div></div><div class="counter"><div class="counter-n">13</div><div class="counter-label">awaiting decisions</div></div><div class="counter"><div class="counter-n">3</div><div class="counter-label">awaiting credentials</div></div><div class="counter"><div class="counter-n">1</div><div class="counter-label">queued</div></div><div class="counter"><div class="counter-n">0</div><div class="counter-label">in progress</div></div><div class="counter"><div class="counter-n">19</div><div class="counter-label">deferred</div></div><div class="counter"><div class="counter-n">5</div><div class="counter-label">parked</div></div><div class="counter"><div class="counter-n">44</div><div class="counter-label">completed</div></div></div>
+  </div>
+  <section class="cat"><header><h2>1. Awaiting your visual sign-off</h2><span class="cat-count">8</span></header><p class="cat-blurb">Items in QA — implementation complete, ready to promote to DONE on a single nod from you.</p><table class="items"><tbody><tr><td style="width: 70px;"><span class="id-chip">A.9</span></td><td class="title-cell">Mobile navigation menu (hamburger) — collapses landing nav links (Home / About / How it Works / Social / Pricing / Contact Us) into a slide-down panel on…<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">F.1</span></td><td class="title-cell">Created /about page using the two long-form paragraphs from READ MORE SECTION COPY.docx (About section).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">F.2</span></td><td class="title-cell">Created /how-it-works page using the two long-form paragraphs from the DOCX (How it Works section).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">F.3</span></td><td class="title-cell">Created /learning page using the two long-form paragraphs from the DOCX (Learning Made for You section).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">F.4</span></td><td class="title-cell">Create /contact page.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">H.1</span></td><td class="title-cell">Added a Home (back-to-home) button to the registration page — fixed top-left, routes to /.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">H.2</span></td><td class="title-cell">Added a Home (back-to-home) button to the sign-in page — same shared HomeBackButton component as H.1.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">I.4</span></td><td class="title-cell">Mobile image input now offers gallery + camera + files via OS-native chooser.<span class="source-tag">— frontend plan</span></td></tr></tbody></table></section><section class="cat"><header><h2>2. Awaiting decisions from you</h2><span class="cat-count">13</span></header><p class="cat-blurb">CLA-status items plus the unresolved open questions in the frontend plan. Each unblocks at least one piece of downstream work.</p><table class="items"><tbody><tr><td style="width: 70px;"><span class="id-chip">A.1</span></td><td class="title-cell">Tier-aware experience routing in backend/app/services/tutor_service.py.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">A.3</span></td><td class="title-cell">Chat guardrails / content moderation.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">B.2</span></td><td class="title-cell">Restore the 21 MB May-2026 PostgreSQL dump onto UAT as the final, complete dataset.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">C.1</span></td><td class="title-cell">Finalise the May-2026 pro forma invoice.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">I.5</span></td><td class="title-cell">Confirm/expose Picture Upload on Silver tier (currently appears Gold-only — verify and adjust gating to align with E.2).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">J.3</span></td><td class="title-cell">(Optional / pending decision) Build on existing user prompting to drive student engagement — currently vague; needs its own brief.<span class="source-tag">— frontend plan</span></td></tr></tbody></table><div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid #DDD8CC;"><div style="font-family: Nunito, sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; color: #7A7A7A; margin-bottom: 8px; font-weight: 800;">Open questions</div><ul class="plain"><li><strong style="color: #1D9E55;">Q2 → K.1:</strong> Tier-differentiation interpretation — response detail, feature gates, or both? Concrete differences?</li><li><strong style="color: #1D9E55;">Q3 → H.5:</strong> WhatsApp OTP, or defer?</li><li><strong style="color: #1D9E55;">Q4 → F.1–F.4:</strong> Are /about, /how-it-works, /learning, /contact URLs OK?</li><li><strong style="color: #1D9E55;">Q6 → I.3:</strong> Edit-question behaviour — replace the turn and re-stream (Gemini-style), or branch to a new thread?</li><li><strong style="color: #1D9E55;">Q7 → E.2 / I.5:</strong> Confirm Picture Upload should be Silver+Gold (need to verify current backend gating).</li><li><strong style="color: #1D9E55;">Q8 → F.4:</strong> Where do /contact form submissions go — support email, DB table, or third-party form service?</li><li><strong style="color: #1D9E55;">Q9 → N.1:</strong> GitHub username / repo name / layout (flat vs archive vs hub) / public vs private (GitHub Pro)?</li></ul></div></section><section class="cat"><header><h2>3. Awaiting credentials from you</h2><span class="cat-count">3</span></header><p class="cat-blurb">The "sign-in trio". Once you send the six strings (Google Client ID + secret, Microsoft Client ID + secret, Turnstile Site key + secret) these flip to WIP and the build starts.</p><table class="items"><tbody><tr><td style="width: 70px;"><span class="id-chip">H.3</span></td><td class="title-cell">Add Google social sign-in.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">H.4</span></td><td class="title-cell">Add Microsoft social sign-in (personal + Microsoft 365 / Entra ID school accounts via the common tenant).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">H.6</span></td><td class="title-cell">Add Cloudflare Turnstile spam protection to the email registration form on /register.<span class="source-tag">— frontend plan</span></td></tr></tbody></table></section><section class="cat"><header><h2>4. Queued, ready to run</h2><span class="cat-count">1</span></header><p class="cat-blurb">Decided + queued (or in flight). Nothing blocking these except a green light to start.</p><table class="items"><tbody><tr><td style="width: 70px;"><span class="id-chip">B.1</span></td><td class="title-cell">UAT VPS redeploy on Rackzar (102.206.117.143, www.skul.co.zm).<span class="source-tag">— backlog</span></td></tr></tbody></table></section><section class="cat"><header><h2>5. Deferred / not yet started</h2><span class="cat-count">19</span></header><p class="cat-blurb">DEF-status items across the frontend plan and the backlog. Not blocked, just not chosen yet.</p><table class="items"><tbody><tr><td style="width: 70px;"><span class="id-chip">A.2</span></td><td class="title-cell">Structured prompt-optimisation phase per docs_post-mvp/retrieval-validation/2026-05-12_prompt_optimization_rationale.md.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">B.3</span></td><td class="title-cell">DPO Group (dpogroup.com) payment integration for production.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">B.4</span></td><td class="title-cell">GCP project ownership transfer from current owner to the client.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">B.5</span></td><td class="title-cell">Cloud Run production deployment.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">B.6</span></td><td class="title-cell">GitHub Actions CI/CD pipeline — test + lint on PR, build + deploy pipeline to Cloud Run on merge to main.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">C.2</span></td><td class="title-cell">Re-seed the 20-account Zambia testing cohort on UAT after B.2 (DB restore) wipes the existing cohort.<span class="source-tag">— backlog</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">I.3</span></td><td class="title-cell">Add an edit-question-after-submit feature on user message bubbles (Gemini-style copy + pencil icons).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">I.3</span></td><td class="title-cell">Add an edit-question-after-submit feature on user message bubbles (Gemini-style copy + pencil icons).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">K.1</span></td><td class="title-cell">Define what &quot;different UX between tiers&quot; means concretely: response detail length, feature gates, UI styling, or all three.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">K.2</span></td><td class="title-cell">Implement Free-tier chat experience per K.1 (lowest detail / fewest features).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">K.3</span></td><td class="title-cell">Implement Silver-tier chat experience per K.1 (mid).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">K.4</span></td><td class="title-cell">Implement Gold-tier chat experience per K.1 (highest detail / all features).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">L.1</span></td><td class="title-cell">Zambia: complete syllabus content Form 1–4 ingestion (mostly done per existing roadmap).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">L.2</span></td><td class="title-cell">Zambia: payment gateway development.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">L.3</span></td><td class="title-cell">Zambia: pre-launch marketing groundwork.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">M.1</span></td><td class="title-cell">Ensure OAuth user creation calls the same subscription bootstrap helper that password registration uses (free tier + lifetime quota row).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">M.2</span></td><td class="title-cell">Decide phone-number capture point for OAuth users (Mobile Money requires it; Google/Facebook don&#x27;t supply it).<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">M.3</span></td><td class="title-cell">Define behaviour when an OAuth sign-up email collides with a password account that has an active paid subscription.<span class="source-tag">— frontend plan</span></td></tr><tr><td style="width: 70px;"><span class="id-chip">M.4</span></td><td class="title-cell">End-to-end smoke test: an OAuth-registered user can purchase Silver and Gold via Flutterwave Mobile Money and Card, receive the webhook activation, and have…<span class="source-tag">— frontend plan</span></td></tr></tbody></table></section><section class="cat"><header><h2>6. Parked indefinitely</h2><span class="cat-count">5</span></header><p class="cat-blurb">Won't pursue without a deliberate reopen. Kept visible so we don't forget they exist.</p><table class="items"><tbody><tr><td style="width: 70px;"><span class="id-chip">H.5</span></td><td class="title-cell">Add WhatsApp sign-in.<span class="source-tag">— frontend plan</span></td></tr></tbody></table><div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid #DDD8CC;"><div style="font-family: Nunito, sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; color: #7A7A7A; margin-bottom: 8px; font-weight: 800;">Discussed but not formally tracked</div><ul class="plain"><li>School-side admin role (Phase 3 from the 2026-05-16 admin discussion)</li><li>Teacher role (Phase 4 from the same discussion)</li><li>Schools dropdown + change-request workflow (Phases 1 + 2 — not yet formally tracked; awaiting schools-list size)</li><li>Manage pending / in-process registrations (the &#x27;other admin thread&#x27; from 2026-05-16 — not yet pulled into the plan)</li></ul></div></section><section class="cat"><header><h2>7. Meta — plan tidy-ups</h2><span class="cat-count">4</span></header><p class="cat-blurb">Housekeeping not tracked as plan items. Pick off opportunistically when in the area.</p><ul class="plain"><li>Migrate frontend plan to docs/plans/frontend-upgrade.md — requires coordinated scripts/generate_progress_board.py path update</li><li>Migrate auth folder to docs/internal/auth/ — opportunistic, hasn&#x27;t been touched yet</li><li>Migrate other legacy folders (DocsGoLive/, rest of docs_post-mvp/) — opportunistic</li><li>G.1&#x27;s body in the frontend plan still has the stale &#x27;which option?&#x27; parenthetical from before the hero was chosen</li></ul></section>
+  <footer class="foot">Internal worklog · regenerate with <code>python scripts/build_worklog_page.py</code> · companion to the public <a href="progress.html">progress board</a>.</footer>
+</div>
+</body>
+</html>
