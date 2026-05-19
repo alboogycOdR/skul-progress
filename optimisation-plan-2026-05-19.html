@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKUL.CO.ZM — Frontend Optimisation Plan for Zambian Devices (2026-05-19)</title>
+<style>
+  :root {
+    --green: #2EBA6C;
+    --green-dark: #229656;
+    --green-light: #E8F5EE;
+    --cream: #FAF7F0;
+    --cream-surface: #F5F1E8;
+    --cream-dark: #E5E0D4;
+    --black: #1A1A1A;
+    --text: #2A2A2A;
+    --text-secondary: #555;
+    --text-tertiary: #888;
+    --border: #E5E0D4;
+    --border-subtle: #EFEAE0;
+    --critical: #C0392B;
+    --high: #D68910;
+    --medium: #2874A6;
+    --low: #707070;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 56px 28px 80px;
+  }
+
+  header.doc-header {
+    border-bottom: 2px solid var(--green);
+    padding-bottom: 24px;
+    margin-bottom: 36px;
+  }
+
+  .kicker {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-dark);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 18px;
+    letter-spacing: -0.7px;
+    color: var(--black);
+  }
+
+  .meta {
+    color: var(--text-tertiary);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .meta strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--black);
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 28px 0 10px;
+    color: var(--black);
+  }
+
+  h3 .badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-radius: 4px;
+    vertical-align: middle;
+  }
+
+  h3 .badge.critical { background: #FBEAE6; color: var(--critical); }
+  h3 .badge.high     { background: #FBF2E1; color: var(--high); }
+  h3 .badge.medium   { background: #E4F0F8; color: var(--medium); }
+  h3 .badge.low      { background: #EEE; color: var(--low); }
+
+  p { margin: 0 0 14px; }
+
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  li > strong { color: var(--black); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 24px;
+    font-size: 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+
+  thead th {
+    background: var(--cream-surface);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  td code, p code, li code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: var(--cream-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.92em;
+    color: var(--green-dark);
+  }
+
+  .priority-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+
+  .priority-section.critical { border-left: 4px solid var(--critical); }
+  .priority-section.high     { border-left: 4px solid var(--high); }
+  .priority-section.medium   { border-left: 4px solid var(--medium); }
+  .priority-section.low      { border-left: 4px solid var(--low); }
+
+  .priority-section h3:first-child { margin-top: 0; }
+
+  .callout {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 18px 0;
+    font-size: 14px;
+  }
+
+  .callout strong { color: var(--green-dark); }
+
+  footer.doc-footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    main { padding: 32px 18px 60px; }
+    h1 { font-size: 26px; }
+    h2 { font-size: 19px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px 10px; }
+  }
+
+  @media print {
+    body { background: white; }
+    main { padding: 0; max-width: none; }
+    h2 { page-break-after: avoid; }
+    .priority-section { page-break-inside: avoid; }
+    table { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<header class="doc-header">
+  <div class="kicker">Optimisation plan</div>
+  <h1>SKUL.CO.ZM — Frontend Optimisation Plan for the Zambian Device Landscape</h1>
+  <div class="meta">
+    <div><strong>Created:</strong> 2026-05-19</div>
+    <div><strong>Source research:</strong> <code>Top‑10 popular devices in Zambia.md</code> (same folder)</div>
+    <div><strong>Scope:</strong> Translate device-popularity research into concrete frontend changes for <code>https://www.skul.co.zm</code></div>
+    <div><strong>Audience:</strong> Current and future SKUL maintainers planning the next optimisation sprint</div>
+  </div>
+</header>
+
+<h2>1. The device landscape (recap)</h2>
+
+<p>The source doc identifies the <strong>top 10 smartphones in active use in Zambia</strong>, dominated by budget Android from Chinese OEMs:</p>
+
+<table>
+  <thead>
+    <tr><th>Tier</th><th>Devices</th><th>Profile</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Entry-level Android (≤ $100)</strong></td>
+      <td>Tecno POP 2/3/10, itel SP591/A16, Infinix Hot 10</td>
+      <td>2–3 GB RAM, Android Go / Android 10–12, Helio A22/A25 or Spreadtrum SoCs, ~720p screens</td>
+    </tr>
+    <tr>
+      <td><strong>Mid-budget Android ($100–250)</strong></td>
+      <td>Tecno Spark 4+, Samsung Galaxy A12/A0x, Tecno Camon 19 Pro</td>
+      <td>4–6 GB RAM, Android 11–13, 6.5"+ HD+ screens</td>
+    </tr>
+    <tr>
+      <td><strong>Older second-hand</strong></td>
+      <td>Galaxy S10/S7, iPhone XR / iPhone 7</td>
+      <td>iOS 14–15, Android 9–11</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The source doc explicitly flags that the <strong>top 6 devices</strong> (Tecno POP/Spark, itel SP591/A16, Samsung A-series, Infinix Hot 10) capture the bulk of low- and mid-income users — i.e., the SKUL target audience.</p>
+
+<h2>2. What it means for the SKUL stack</h2>
+
+<p>Cross-referencing this device list with SKUL's current frontend state surfaces several priorities, grouped by urgency.</p>
+
+<div class="priority-section critical">
+  <h3>Critical <span class="badge critical">Hurts users today</span></h3>
+
+  <ol>
+    <li>
+      <strong>Frontend is still on the Vite dev server in production.</strong>
+      <code>KNOWN_ISSUES.md</code> ISSUE-005 tracks this as "deferred to Sprint Omega". Vite dev server ships unminified, unbundled JS with HMR overhead. On a Tecno POP with a Helio A22 and 2 GB RAM, this is the difference between a usable site and a frozen tab.
+      <br><strong>Action:</strong> Multi-stage Docker build with <code>npm run build</code> + Nginx-served <code>dist/</code>. This is now an urgency upgrade, not "nice to have".
+    </li>
+    <li>
+      <strong>Hero images on read-more pages weigh 130–185 KB each.</strong>
+      Across <code>/about</code>, <code>/how-it-works</code>, <code>/learning</code> that's ~500 KB just for heroes. On Zambian mobile data (~$1.50/GB at MTN/Airtel), that costs the user money.
+      <br><strong>Action:</strong> Add <code>loading="lazy"</code> to offscreen images; generate WebP/AVIF variants (50–70% smaller); use <code>&lt;picture&gt;</code> with fallbacks.
+    </li>
+    <li>
+      <strong>KaTeX maths rendering.</strong>
+      Currently loaded for every chat message. Non-maths students pay the cost.
+      <br><strong>Action:</strong> Confirm code-split / lazy-load behaviour; if not split, do so.
+    </li>
+    <li>
+      <strong>No initial JS bundle budget.</strong>
+      <br><strong>Action:</strong> Set a target — aim for ≤ 100 KB gzipped to first paint. Enforce in CI.
+    </li>
+  </ol>
+</div>
+
+<div class="priority-section high">
+  <h3>High priority <span class="badge high">Mitigates older-OS reality</span></h3>
+
+  <ol start="5">
+    <li>
+      <strong>Browser baseline.</strong> Set Vite's <code>target</code> to support Chrome 80+ / iOS Safari 14+. Avoid bleeding-edge ES2022+ syntax unless transpiled.
+    </li>
+    <li>
+      <strong>PWA capabilities.</strong> Manifest is already in place (added in the 2026-05-19 frontend revamp pull). Next step: a proper service worker for offline page caching and shell-app behaviour. Material for users on flaky 2G/3G in rural areas.
+    </li>
+    <li>
+      <strong>Touch targets and font sizes.</strong> Test at 360×640 (Tecno/itel resolution) and 412×915 (Samsung A-series). Touch targets &lt; 44×44 px and body text &lt; 14 px both fail accessibility on these screens.
+    </li>
+  </ol>
+</div>
+
+<div class="priority-section medium">
+  <h3>Medium priority <span class="badge medium">Quality of experience</span></h3>
+
+  <ol start="8">
+    <li>
+      <strong>Reduce font weight variants.</strong> Currently loading Nunito at weights 400/600/700/800/900 + Nunito Sans at 300/400/500/600/700 — roughly 10 font files. Cull to 3–4 weights (e.g. 400, 600, 700, 800). Saves ~200 KB.
+    </li>
+    <li>
+      <strong>Cap image dimensions in DOM via srcset.</strong> Hero images are 1376×768 source; rendered at ~360 px wide on phones. Serve a 720px variant for mobile via <code>&lt;picture&gt;</code> with <code>srcset</code>. ~70% saving on those screens.
+    </li>
+    <li>
+      <strong>Skeleton loaders.</strong> Chat SSE streaming already does perceived-speed well. Extend the pattern to conversation lists, admin pages, etc.
+    </li>
+  </ol>
+</div>
+
+<div class="priority-section low">
+  <h3>Lower priority <span class="badge low">Polish</span></h3>
+
+  <ol start="11">
+    <li>
+      <strong>Static pre-render the read-more pages</strong> (<code>/about</code>, <code>/how-it-works</code>, <code>/learning</code>). These are essentially static content. Pre-rendering eliminates JS overhead entirely for those routes.
+    </li>
+    <li>
+      <strong>Data-saver mode.</strong> Detect <code>Save-Data: on</code> request header or <code>navigator.connection.saveData</code> flag; skip decorative imagery, lower image quality.
+    </li>
+  </ol>
+</div>
+
+<h2>3. Suggested sprint sequencing</h2>
+
+<table>
+  <thead>
+    <tr><th style="width: 80px">Sprint</th><th>Deliverable</th><th>Why this order</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Multi-stage Dockerfile, frontend production build, Nginx-served <code>dist/</code> (ISSUE-005)</td>
+      <td>Single biggest perf win for budget devices. Unblocks everything else.</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Bundle size baseline + CI budget enforcement</td>
+      <td>Prevents regression as we iterate</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Image optimisation pass (WebP/AVIF, srcset, lazy-load)</td>
+      <td>High data-cost reduction</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Font weight cull</td>
+      <td>Cheap quick win</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Service worker + offline page cache</td>
+      <td>Real PWA capability on patchy networks</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Device testing on Tecno POP / Samsung A12 (real hardware or BrowserStack)</td>
+      <td>Validation rather than optimisation</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>KaTeX code-split + skeleton loaders</td>
+      <td>Polish</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Static pre-render of read-more pages</td>
+      <td>Lower priority, smaller win</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Validation approach</h2>
+
+<p>Before declaring any optimisation "done", validate on devices that match the target list:</p>
+
+<ul>
+  <li><strong>Real hardware (preferred):</strong> Tecno POP 3 or Spark 4, Samsung Galaxy A12, Infinix Hot 10. Source from Lusaka if needed.</li>
+  <li><strong>BrowserStack alternative:</strong> Covers most listed devices. Useful for quick smoke tests, less useful for actual performance feel.</li>
+  <li><strong>Lighthouse mobile audit:</strong> Aim for Performance score ≥ 80 with the "Slow 4G + Moderate CPU throttle" preset on every PR.</li>
+</ul>
+
+<div class="callout">
+  <strong>Reality check:</strong> the goal isn't a perfect Lighthouse score on a high-end iPhone. It's "the site usable on a Tecno POP 3 over 3G in Ndola." Synthetic benchmarks are a proxy, not the goal.
+</div>
+
+<h2>5. Open questions / follow-up research</h2>
+
+<p>The source document was brief and explicitly offered to expand. Next research request worth making:</p>
+
+<ol>
+  <li><strong>Specific resolutions and viewport sizes</strong> of each top-10 device, with portrait + landscape coverage. The 360×640 / 412×915 baseline I'm working from is approximate.</li>
+  <li><strong>OS-version distribution</strong> in Zambia specifically (what fraction of users are still on Android 9 vs 12 vs 14? iOS 14 vs 17?).</li>
+  <li><strong>Network conditions</strong> — average effective bandwidth in major Zambian markets (Lusaka, Ndola, Kitwe, rural areas) on MTN, Airtel, Zamtel. Sets realistic perf budgets.</li>
+  <li><strong>Storage / RAM constraints</strong> — particularly relevant for service worker cache sizes and image preloading strategies.</li>
+</ol>
+
+<h2>6. Related work and references</h2>
+
+<table>
+  <thead>
+    <tr><th>Document</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Top‑10 popular devices in Zambia.md</code> (same folder)</td>
+      <td>Source research that this plan builds on</td>
+    </tr>
+    <tr>
+      <td><code>KNOWN_ISSUES.md</code> ISSUE-005</td>
+      <td>Vite dev server in prod — the headline blocker</td>
+    </tr>
+    <tr>
+      <td><code>DocsGoLive/PRODUCTION_MAINTENANCE_RUNBOOK_2026-05-19.md</code></td>
+      <td>Procedure for deploying any of the changes here (Scenario A or B)</td>
+    </tr>
+    <tr>
+      <td>Git HEAD at time of writing</td>
+      <td><code>ef25345</code> — post the 2026-05-19 frontend revamp push (landing page, read-more pages, hero images, scroll-to-top fix, footer overlap fix)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>7. Changelog</h2>
+
+<table>
+  <thead>
+    <tr><th style="width: 110px">Date</th><th style="width: 180px">Author</th><th>Change</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-05-19</td>
+      <td>Current maintainer</td>
+      <td>Initial analysis based on the device research document of the same date.</td>
+    </tr>
+  </tbody>
+</table>
+
+<footer class="doc-footer">
+  SKUL.CO.ZM · Internal optimisation plan · 2026-05-19
+</footer>
+
+</main>
+</body>
+</html>
