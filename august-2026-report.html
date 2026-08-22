@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SKUL.CO.ZM — Monthly Progress Report, August 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito Sans', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #EEEADE;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+.page { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+
+/* ---------- header ---------- */
+header.main { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+.brand-mark {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: #2EBA6C; color: #FFFFFF;
+  display: grid; place-items: center;
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -1px;
+  flex-shrink: 0;
+}
+h1 { font-family: 'Nunito', sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+.subtitle { margin: 4px 0 0; color: #3A3A3A; font-size: 15px; }
+.meta-line {
+  margin: 18px 0 34px; font-size: 13px; color: #7A7A7A;
+  padding-bottom: 22px; border-bottom: 1px solid #DDD8CC;
+}
+.crumb { display: inline-block; margin-bottom: 22px; font-size: 13px; font-weight: 700; color: #1D9E55; text-decoration: none; }
+.crumb:hover { text-decoration: underline; }
+
+/* ---------- typography ---------- */
+h2 {
+  font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 800;
+  letter-spacing: -0.3px; margin: 44px 0 6px;
+}
+h3 { font-family: 'Nunito', sans-serif; font-size: 17px; font-weight: 700; margin: 28px 0 8px; }
+p { margin: 12px 0; font-size: 15.5px; line-height: 1.65; color: #2A2A2A; }
+strong { font-weight: 700; color: #111111; }
+ul, ol { margin: 12px 0 12px 22px; }
+li { margin: 7px 0; font-size: 15.5px; line-height: 1.6; color: #2A2A2A; }
+
+.section-tag {
+  display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; color: #1D9E55; margin-top: 44px;
+}
+.section-tag + h2 { margin-top: 2px; }
+
+/* ---------- lede ---------- */
+.lede {
+  background: #FFFFFF; border: 1px solid #DDD8CC; border-left: 4px solid #2EBA6C;
+  border-radius: 14px; padding: 22px 26px; margin-bottom: 8px;
+}
+.lede p { margin: 0; font-size: 16px; line-height: 1.7; }
+
+/* ---------- stat grid ---------- */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 22px 0 8px; }
+.stat {
+  background: #FFFFFF; border: 1px solid #DDD8CC; border-radius: 14px;
+  padding: 18px 18px 16px; text-align: left;
+}
+.stat .num {
+  font-family: 'Nunito', sans-serif; font-size: 27px; font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.5px; color: #111111;
+}
+.stat .num.good { color: #1D9E55; }
+.stat .lbl { margin-top: 6px; font-size: 12.5px; color: #6A6A6A; line-height: 1.4; }
+
+/* ---------- cards ---------- */
+.card {
+  background: #FFFFFF; border: 1px solid #DDD8CC; border-radius: 16px;
+  padding: 22px 26px; margin: 18px 0;
+}
+.card h3 { margin-top: 0; }
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+
+.note {
+  background: #FFF9E3; border: 1px solid #EBDCA8; border-radius: 14px;
+  padding: 18px 22px; margin: 20px 0;
+}
+.note .note-head {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px;
+  letter-spacing: 0.6px; text-transform: uppercase; color: #8A6D10; margin-bottom: 6px;
+}
+.note p { margin: 6px 0 0; font-size: 15px; }
+.note p:first-of-type { margin-top: 0; }
+
+/* ---------- tables ---------- */
+.table-wrap { overflow-x: auto; margin: 20px 0; -webkit-overflow-scrolling: touch; }
+table {
+  width: 100%; border-collapse: collapse; background: #FFFFFF;
+  border: 1px solid #DDD8CC; border-radius: 14px; overflow: hidden; font-size: 14.5px;
+  min-width: 460px;
+}
+th {
+  background: #E5E0D2; font-family: 'Nunito', sans-serif; font-weight: 800;
+  font-size: 12.5px; letter-spacing: 0.4px; text-transform: uppercase; color: #4A4A4A;
+  text-align: left; padding: 12px 16px;
+}
+td { padding: 12px 16px; border-top: 1px solid #E8E3D6; vertical-align: top; color: #2A2A2A; }
+td.before { color: #9A6A6A; }
+td.after { font-weight: 700; color: #1D9E55; }
+tr:nth-child(even) td { background: #FCFBF7; }
+
+/* ---------- timeline ---------- */
+.timeline { border-left: 2px solid #DDD8CC; margin: 22px 0 22px 8px; padding-left: 0; }
+.tl-item { position: relative; padding: 0 0 22px 26px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -7px; top: 5px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #2EBA6C; border: 2px solid #EEEADE;
+}
+.tl-date {
+  font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px;
+  color: #1D9E55; letter-spacing: 0.3px;
+}
+.tl-body { margin-top: 3px; font-size: 15px; line-height: 1.6; color: #2A2A2A; }
+
+/* ---------- footer ---------- */
+footer.foot {
+  margin-top: 56px; padding-top: 24px; border-top: 1px solid #DDD8CC;
+  font-size: 12.5px; color: #7A7A7A; text-align: center; line-height: 1.7;
+}
+.sig {
+  font-family: 'Nunito', sans-serif; font-weight: 800; letter-spacing: 0.6px;
+  color: #3A3A3A; font-size: 13px;
+}
+
+@media (max-width: 620px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .page { padding: 32px 18px 60px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 19px; }
+  .brand-mark { width: 46px; height: 46px; font-size: 21px; border-radius: 12px; }
+  .card, .lede { padding: 18px 20px; }
+  .stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat .num { font-size: 23px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="crumb" href="index.html">&larr; All reports</a>
+
+  <header class="main">
+    <div class="brand-mark">S</div>
+    <div>
+      <h1>Monthly Progress Report</h1>
+      <p class="subtitle">August 2026 &mdash; sponsor update</p>
+    </div>
+  </header>
+
+  <p class="meta-line">
+    Period covered: 1 &ndash; 22 August 2026 &middot; Prepared by SKULL_DEV_TEAM &middot; Published 22 August 2026
+  </p>
+
+  <div class="lede">
+    <p>
+      August was the month SKUL.CO.ZM stopped being a project being tested and became a
+      service being run. The platform went permanently live on real payment credentials,
+      all three mobile money operators were proven with real money, and the safety net a
+      live service needs &mdash; backups, monitoring, alerts &mdash; was put in place. Then, on
+      8&nbsp;August, we corrected something significant that had gone unnoticed since March:
+      the website had been delivered to learners in the mode normally used while a site is
+      being <em>built</em>, rather than the mode used to <em>publish</em> it. Fixing it made the
+      site substantially lighter for learners on basic phones, and closed two matters that
+      should not have been left standing.
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num good">3 of 3</div><div class="lbl">Mobile money operators proven with real money</div></div>
+    <div class="stat"><div class="num">61</div><div class="lbl">Registered learners at go-live</div></div>
+    <div class="stat"><div class="num good">None</div><div class="lbl">Interruptions to the live service</div></div>
+    <div class="stat"><div class="num">20</div><div class="lbl">Distinct pieces of work delivered</div></div>
+    <div class="stat"><div class="num good">4.7 MB</div><div class="lbl">Website memory use, down from 162 MB</div></div>
+    <div class="stat"><div class="num good">Restored</div><div class="lbl">Backups tested by actual restore, not assumed</div></div>
+  </div>
+
+  <p style="font-size:14px;color:#7A7A7A;margin-top:16px;">
+    A note on the shape of the month: work clusters into a handful of intensive days rather
+    than spreading evenly. That is the normal rhythm of this project, and it is reflected
+    honestly here rather than smoothed out.
+  </p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">1 AUGUST</div>
+      <div class="tl-body">MTN and Zamtel proven with real money. All three operators now confirmed working.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">4 AUGUST</div>
+      <div class="tl-body">Permanent go-live on real payment credentials. Backups, restore drill, monitoring and alerting established. Launch announcement published.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">5 AUGUST</div>
+      <div class="tl-body">Business owner begins onboarding real learners. Second development machine set up.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">6 AUGUST</div>
+      <div class="tl-body">Curriculum coverage gap found and contained. Operating knowledge verified against the live system and written down.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">8 AUGUST</div>
+      <div class="tl-body">Website delivery corrected after five months in the wrong mode. Two security matters closed. Automated verification introduced.</div>
+    </div>
+  </div>
+
+  <!-- ============ PART ONE ============ -->
+  <span class="section-tag">Part one</span>
+  <h2>Going live properly</h2>
+
+  <h3>The platform went permanently live</h3>
+  <p>
+    Until this month, going live had been a series of temporary windows: switch to real
+    payment credentials, test, switch back. On the evening of 4&nbsp;August the platform moved
+    to real credentials <strong>permanently</strong>. The business owner began onboarding real
+    learners the following morning.
+  </p>
+  <p>
+    The changeover was done carefully rather than quickly. A backup was taken immediately
+    beforehand as a clean boundary point, the change was compared against the existing
+    settings before being applied, and afterwards we confirmed that no learner data had
+    shifted during the switch &mdash; the counts of learners, subscriptions, payments and
+    curriculum content all matched exactly what they had been before.
+  </p>
+
+  <h3>All three mobile money operators now proven</h3>
+  <p>
+    On 1&nbsp;August, MTN and Zamtel were both tested with real money &mdash; a genuine purchase,
+    not a simulation. Both worked first time, and both correctly activated the learner's
+    subscription automatically. Combined with Airtel, which was proven in July,
+    <strong>all three operators a Zambian learner might use are now confirmed working.</strong>
+  </p>
+  <div class="note">
+    <div class="note-head">One honest qualification</div>
+    <p>
+      Zamtel had never been confirmed as working with our payment provider at all before
+      this test. It resolved positively, but it has one clean success behind it and has not
+      been tested against failure cases. Airtel remains the most thoroughly exercised of the
+      three.
+    </p>
+  </div>
+
+  <h3>Backups now exist, and have been proven to work</h3>
+  <p>
+    This is worth stating plainly, because the previous position was poor: <strong>before this
+    month there were no backups of the live system at all, and no schedule to create any.</strong>
+  </p>
+  <p>
+    Now there is a backup taken automatically every night at 3am, kept for a fortnight, with
+    a second copy held away from the main server and verified as identical. More importantly,
+    we did not simply set backups running and assume they work. We performed a
+    <strong>restore drill</strong> &mdash; took a backup, restored it into a separate scratch
+    database, confirmed every record came back correctly, then discarded the scratch copy.
+    The live system was never touched during this.
+  </p>
+  <p>
+    A backup that has never been restored is a hope, not a safeguard. This one has been
+    restored.
+  </p>
+
+  <h3>Cost control</h3>
+  <p>
+    We found the cloud spending alert set to a threshold of about $12 a month, which real
+    usage would have breached almost immediately &mdash; meaning it would have fired constantly
+    and quickly been ignored. It has been raised to a realistic $200 a month with warnings at
+    50%, 80% and 100%.
+  </p>
+  <div class="note">
+    <div class="note-head">For the sponsor's awareness</div>
+    <p>
+      This <em>alerts</em>; it does not <em>cap</em>. Nothing automatically stops spending at
+      $200 &mdash; it simply tells us we have got there. A hard cap is a separate decision and
+      carries its own risk, since it would take the service offline rather than overspend. We
+      have not taken that decision unilaterally.
+    </p>
+  </div>
+
+  <h3>Monitoring and alerting</h3>
+  <p>Three independent layers now watch the service:</p>
+  <ol>
+    <li><strong>Uptime monitoring</strong> &mdash; checks from outside that the site is reachable.</li>
+    <li><strong>Signup and payment alerts</strong> &mdash; an email every time a learner registers or a payment succeeds, checked every five minutes. Deliberately built to run completely outside the platform, so that a fault in the alerting cannot affect the service it is watching.</li>
+    <li><strong>Nightly backups</strong> &mdash; as above.</li>
+  </ol>
+
+  <h3>Launch announcement page</h3>
+  <p>
+    A temporary announcement page was published to mark go-live. One decision here is worth
+    recording for the sponsor, as it concerns safeguarding.
+  </p>
+  <p>
+    The page included a video featuring identifiable minors. The video and its still image
+    were <strong>deliberately not stored in the project's permanent history</strong>, because
+    that history is effectively impossible to erase &mdash; the files would persist in every
+    future copy of the project long after the page itself was taken down. Consent had been
+    given for the launch page specifically, which is the narrower thing, so the files live
+    only on the server that serves them. We would rather be careful here than convenient.
+  </p>
+
+  <!-- ============ PART TWO ============ -->
+  <span class="section-tag">Part two</span>
+  <h2>Making the service safe to operate</h2>
+
+  <h3>Written-down knowledge, verified against reality</h3>
+  <p>
+    A one-line change to the website took three failed attempts and two wrong diagnoses. The
+    cause was not the change; it was that our understanding of how the live system was
+    assembled was wrong in a specific way.
+  </p>
+  <p>
+    The response was to write a reference document in which <strong>every single fact was read
+    directly from the live server</strong>, not from memory or from project files that might
+    have drifted. This is dull work with no visible output, and it is the reason later work
+    that month went smoothly. A companion document was written covering what to check first
+    when something breaks, so that diagnosis does not depend on who is available.
+  </p>
+
+  <h3>A real problem with curriculum coverage, found and contained</h3>
+  <p>
+    Our curriculum content covers Grades 8, 9 and 10 only. However, learners could register
+    as Form 4 or Form 5 students.
+  </p>
+  <p>
+    The consequence was quiet and serious: the tutor matches its answers against the syllabus
+    content for the learner's grade. A Form 4 or Form 5 learner matched <strong>no syllabus
+    content whatsoever</strong>, and so received answers with no curriculum grounding at all
+    &mdash; with nothing on screen to indicate it. That is the opposite of what the platform
+    promises.
+  </p>
+  <p>
+    Form 4 and Form 5 have been <strong>temporarily removed from registration</strong> until
+    the content exists to support them. This is a deliberate reduction in what we offer rather
+    than continuing to offer something we cannot yet deliver properly.
+  </p>
+  <div class="note">
+    <div class="note-head">Decision point for the sponsor</div>
+    <p>
+      The platform currently serves three year groups. Extending to Forms 4 and 5 is a content
+      exercise, not a software one, and it has not been scheduled.
+    </p>
+  </div>
+
+  <!-- ============ PART THREE ============ -->
+  <span class="section-tag">Part three &mdash; 8 August</span>
+  <h2>The website delivery correction</h2>
+  <p>
+    This was the most substantial single day of the month, and the rest of this report covers
+    it in detail.
+  </p>
+
+  <h3>What was wrong</h3>
+  <p>Modern websites can be delivered two ways.</p>
+  <p>
+    <strong>The building mode</strong> keeps every part of the website separate, so that a
+    developer can change one small thing and see it immediately. Convenient while working
+    &mdash; but a visitor's phone must then request hundreds of small pieces individually and
+    assemble them itself.
+  </p>
+  <p>
+    <strong>The published mode</strong> compresses and packages everything into a few small
+    files, delivered in one go.
+  </p>
+  <p>
+    SKUL.CO.ZM had been running in <strong>the building mode since March</strong>, including
+    for every real learner since go-live. A fair comparison: it is like serving customers from
+    the stockroom rather than the shop floor. Everyone gets what they came for, but it is
+    slower, less tidy, and they can see things that were never meant for them.
+  </p>
+
+  <h3>How it happened &mdash; the honest account</h3>
+  <p>We looked into the history, and it is worth being straightforward.</p>
+  <p>
+    <strong>Nobody decided this.</strong> When the project was first set up in March, the
+    website was configured in building mode &mdash; the ordinary starting point for any new
+    project. In April, when the site was first placed behind its public web address, that
+    configuration stopped working correctly. It was adjusted so that it <em>would</em> work
+    publicly, rather than replaced with the published mode. The quicker fix was chosen at the
+    time, under pressure to get the testing environment running.
+  </p>
+  <p>
+    That April change is the moment the problem became real, and it was made while fixing
+    something else entirely. Because the site worked, nothing since forced the question. The
+    preparations for published mode already existed in the project from early on &mdash; the
+    final step of switching over was simply never taken.
+  </p>
+
+  <h3>What changed, measured on the live site</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th></th><th>Before</th><th>After</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Memory used by the website server</td><td class="before">162 MB</td><td class="after">4.7 MB</td></tr>
+        <tr><td>Size of the deployed package</td><td class="before">312 MB</td><td class="after">99 MB</td></tr>
+        <tr><td>Data a learner's phone downloads</td><td class="before">Hundreds of separate files</td><td class="after">One 139 kB package</td></tr>
+        <tr><td>Internal project files readable by any visitor</td><td class="before">Yes</td><td class="after">No &mdash; not present at all</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    For our learners specifically &mdash; low-end Android phones on slow, often metered
+    connections &mdash; the third row is the one that matters. Fewer requests and less data
+    means the site loads faster and costs the learner less.
+  </p>
+
+  <h3>Two matters closed that should not have been left standing</h3>
+
+  <div class="card">
+    <h3>Learners' passwords were being written into their own browser's log</h3>
+    <p>
+      Four diagnostic messages had been left in the website's code. One of them recorded the
+      full contents of every request the site made &mdash; which meant that at sign-in, a
+      learner's password in plain text, and the token that identifies them afterwards, were
+      written into their browser's developer log.
+    </p>
+    <p>
+      To be precise about the risk, because it should neither be overstated nor waved away:
+      this log is visible only on the learner's own device, to someone who opens the developer
+      tools. It was not transmitted anywhere, and there is no indication it was accessed. It
+      should nonetheless never have been there, and <strong>it is now gone</strong>.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Internal project files were readable by anyone visiting the site</h3>
+    <p>
+      Because of the building mode, several of the project's own configuration files were
+      fetchable over the web by anyone who knew to ask for them. We verified this directly
+      &mdash; they returned real content.
+    </p>
+    <p>
+      We also verified the limit of the exposure: <strong>no passwords, keys or credentials
+      were among them.</strong> The website portion of the project holds no such file, and
+      requests for one returned nothing. The exposure was of structure and configuration, not
+      secrets. Both issues are fixed and the files are no longer present in the deployed site
+      at all.
+    </p>
+  </div>
+
+  <p>
+    <strong>A third matter, visible to visitors.</strong> On 6&nbsp;August a visitor moving
+    between pages was briefly shown a developer error message across the whole screen. It
+    cleared on refresh. This was a symptom of the same underlying cause, and it prompted the
+    investigation that led to all of the above.
+  </p>
+
+  <h3>A failure that would have gone unnoticed &mdash; closed by design</h3>
+  <p>
+    After the correction was deployed, the live site depended on <strong>a single line of
+    configuration held only on the server and not stored in the project's records.</strong>
+    Had that file ever been restored from the project, the site would have silently reverted
+    to the building mode: no error, no warning, and nothing in our monitoring would have
+    caught it.
+  </p>
+  <p>
+    Rather than write this down as a caution for someone to remember, we changed the
+    arrangement so that <strong>the correct behaviour is now the default</strong>. Anyone
+    setting up the project fresh gets the published mode automatically. The only way to get
+    the building mode is to ask for it explicitly, and the file that does so cannot reach a
+    server.
+  </p>
+  <div class="note">
+    <div class="note-head">A principle to hold us to</div>
+    <p>
+      Where a safeguard matters, it should be something that is <em>checked</em>, not something
+      that has to be <em>remembered</em>.
+    </p>
+  </div>
+
+  <h3>Better error messages for learners</h3>
+  <p>
+    Separately, any learner who mistyped their password was told <em>&ldquo;Session expired.
+    Please log in again.&rdquo;</em> &mdash; meaningless, since they had never been signed in,
+    and no hint that the password was simply wrong. They are now told the password is
+    incorrect.
+  </p>
+
+  <!-- ============ CANDOUR ============ -->
+  <span class="section-tag">Candour</span>
+  <h2>What we found wrong in our own records</h2>
+  <p>
+    Three things this project had written down as true were found to be false, all on the same
+    day.
+  </p>
+  <ul>
+    <li>A safety control that our documentation described as being switched on had, in fact, never been switched on.</li>
+    <li>Our documentation described a routine quality check that has never existed at all.</li>
+    <li>A duplicated copy of the project's own instructions had drifted out of date and was contradicting the real one on four points &mdash; including which payment provider we use and how many free questions a learner receives.</li>
+  </ul>
+  <p>
+    We are reporting this because the pattern matters more than the individual errors:
+    <strong>written assurances decay silently, and nothing tells you when.</strong> Any of the
+    three could have produced confidently wrong work.
+  </p>
+  <p>
+    The response was not to write more documentation. It was to build an automated check that
+    inspects the live system and reports pass or fail against eleven specific conditions
+    &mdash; the things we had previously only asserted. It is now run before and after any
+    change to the live service.
+  </p>
+
+  <!-- ============ OPEN ITEMS ============ -->
+  <span class="section-tag">Open items</span>
+  <h2>What remains</h2>
+  <p>
+    These are known, deliberately not started, and stated so that none of them comes as a
+    surprise later.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th style="width:34%">Item</th><th>Position</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>A dedicated testing environment</strong></td>
+          <td>Decided in principle on 8 August, not yet provisioned. At present the testing address and the live address share the same server and the same database, which means testing carries real risk. Needs a decision on budget for a separate machine.</td>
+        </tr>
+        <tr>
+          <td><strong>One remaining monitoring gap</strong></td>
+          <td>Our monitoring would not currently notice a site that returns a valid but broken page. The specific check needed has been designed but not yet created. This is the single highest-value small task outstanding.</td>
+        </tr>
+        <tr>
+          <td><strong>Forms 4 and 5</strong></td>
+          <td>Removed from registration until curriculum content exists. A content exercise, unscheduled.</td>
+        </tr>
+        <tr>
+          <td><strong>Second phase of the configuration work</strong></td>
+          <td>The live server's setup file still contains a substantial amount of configuration that exists nowhere in the project's records. Planned, not started.</td>
+        </tr>
+        <tr>
+          <td><strong>Content-safety thresholds for the AI</strong></td>
+          <td>Specification written. Deliberately referred to stakeholders rather than decided by us, as it is a judgement about children's safety and not a technical matter.</td>
+        </tr>
+        <tr>
+          <td><strong>Publication of updated legal documents</strong></td>
+          <td>Awaiting stakeholder decision.</td>
+        </tr>
+        <tr>
+          <td><strong>Hard cap on cloud spending</strong></td>
+          <td>Alerting is in place; capping is not. Requires a decision, as a cap would take the service offline rather than overspend.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ ASSESSMENT ============ -->
+  <span class="section-tag">Assessment</span>
+  <h2>Where this leaves us</h2>
+  <p>
+    The service is live, monitored, backed up, and has been running without interruption.
+    Payments work across all three operators with real money. The most significant technical
+    debt carried since March has been repaid, and the two matters found alongside it have been
+    closed.
+  </p>
+  <p>
+    The candid part: several of this month's most valuable pieces of work were corrections of
+    things that should not have been the case &mdash; a site running in the wrong mode for five
+    months, no backups on a live service, an alert threshold set so low it would have been
+    ignored, and our own records asserting safeguards that did not exist. We would rather
+    report that plainly than present the month as uninterrupted progress.
+  </p>
+  <p>
+    Two things now protect against a repeat: the automated check described above, and a working
+    practice of verifying claims against the live system rather than against what is written
+    down.
+  </p>
+  <p>
+    <strong>The largest outstanding risk is not technical.</strong> It is that testing currently
+    happens on the same server and database that serves real learners. That is the item we would
+    ask the sponsor to consider funding next.
+  </p>
+
+  <footer class="foot">
+    <div class="sig">SKULL_DEV_TEAM</div>
+    22 August 2026 &middot; SKUL.CO.ZM<br>
+    For questions, contact your project liaison.
+  </footer>
+
+</div>
+</body>
+</html>
